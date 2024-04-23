@@ -35,6 +35,7 @@ public class SecurityConfiguration {
                 .disable()
                 .authorizeHttpRequests()
                 .requestMatchers("/auth/**").permitAll()
+                .requestMatchers("/employees/**").hasRole("EMPLOYEE")
                 .anyRequest().authenticated()
                 .and()
                 .sessionManagement()

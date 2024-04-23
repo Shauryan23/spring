@@ -1,11 +1,13 @@
 package com.springEms.EmployeeService.entity;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import lombok.AllArgsConstructor;
@@ -38,7 +40,8 @@ public class Employee implements UserDetails {
 
 	@Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of();
+        //return List.of();
+		return Collections.singletonList(new SimpleGrantedAuthority("ROLE_EMPLOYEE"));
     }
 
     public String getPassword() {
